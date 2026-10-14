@@ -1,61 +1,102 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Koreya Mektebi — корей тілін үйрен</title>
-<meta name="description" content="Корей тілін қазақша түсіндірмелермен үйрен: хангыль, 15 сабақ, сөздік, диалогтар, тесттер. Тегін.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koreya Mektebi - 登录</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            width: 350px;
+            text-align: center;
+        }
+        h2 { color: #333; margin-bottom: 24px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #5a6fd6; }
+        .tip { font-size: 12px; color: #666; margin-top: 15px; }
+    </style>
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-      <a href="#/home" class="logo-link">
-        <span class="logo-mark">한</span>
-        <span class="logo-text">
-          <b>Koreya Mektebi</b>
-          <small data-i18n="appTag"></small>
-        </span>
-      </a>
-      <button class="icon-btn nav-close" id="navClose" aria-label="close">✕</button>
-    </div>
-    <nav class="nav" id="nav">
-      <a href="#/home" class="nav-item" data-route="home"><span class="nav-ico">🏠</span><span data-i18n="nav.home"></span></a>
-      <a href="#/lessons" class="nav-item" data-route="lessons"><span class="nav-ico">📚</span><span data-i18n="nav.lessons"></span></a>
-      <a href="#/tests" class="nav-item" data-route="tests"><span class="nav-ico">✅</span><span data-i18n="nav.tests"></span></a>
-      <a href="#/progress" class="nav-item" data-route="progress"><span class="nav-ico">📈</span><span data-i18n="nav.progress"></span></a>
-      <a href="#/dictionary" class="nav-item" data-route="dictionary"><span class="nav-ico">📖</span><span data-i18n="nav.dictionary"></span></a>
-      <a href="#/profile" class="nav-item" data-route="profile"><span class="nav-ico">👤</span><span data-i18n="nav.profile"></span></a>
-    </nav>
-    <div class="sidebar-bottom">
-      <div class="sidebar-user" id="sidebarUser"></div>
-      <button class="nav-item theme-btn" id="themeBtn"><span class="nav-ico">🌙</span><span data-i18n="theme"></span></button>
-      <div class="lang-switch" id="langSwitch">
-        <button data-lang="kk" class="lang-btn">Қаз</button>
-        <button data-lang="ru" class="lang-btn">Рус</button>
-        <button data-lang="zh" class="lang-btn">中文</button>
-      </div>
-    </div>
-  </aside>
-  <div class="backdrop" id="backdrop"></div>
-  <main class="main">
-    <header class="topbar">
-      <button class="icon-btn nav-open" id="navOpen" aria-label="menu">☰</button>
-      <span class="topbar-brand" id="topbarBrand">Koreya Mektebi</span>
-      <span class="topbar-right">
-        <button class="icon-btn" id="themeBtnTop" aria-label="theme">🌙</button>
-      </span>
-    </header>
-    <div class="content" id="view"></div>
-    <footer class="footer" id="footer"></footer>
-  </main>
+
+<div class="login-card">
+    <h2>Koreya Mektebi</h2>
+    <p style="color: #666; font-size: 14px;">请输入您的电子邮箱进行安全登录</p>
+    <input type="email" id="emailInput" placeholder="name@example.com">
+    <button onclick="sendLoginLink()">发送邮箱验证链接</button>
+    <div class="tip">我们将向该邮箱发送一封无密码登录邮件</div>
 </div>
-<script src="js/i18n.js"></script>
-<script src="js/content.js"></script>
-<script src="js/app.js"></script>
+
+<!-- 引入 Firebase 核心服务和身份验证插件 -->
+<script src="https://gstatic.com"></script>
+<script src="https://gstatic.com"></script>
+
+<script>
+    // 你的专属项目钥匙
+    const firebaseConfig = {
+        apiKey: "AIzaSyAhw7XJEd9JWTvtKd21ZuYPy9CoWv4yvuY",
+        authDomain: "://firebaseapp.com",
+        projectId: "korey-learning",
+        storageBucket: "://appspot.com",
+        messagingSenderId: "394690421532",
+        appId: "1:394690421532:web:e82aa4d375f92772d989d9"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // 发送邮件的逻辑
+    function sendLoginLink() {
+        const email = document.getElementById('emailInput').value;
+        if (!email) {
+            alert('请先输入有效的邮箱地址！');
+            return;
+        }
+
+        const actionCodeSettings = {
+            // 验证成功后，自动完美跳转回你的 GitHub 线上韩语主页 home.html
+            url: 'https://github.io', 
+            handleCodeInApp: true
+        };
+
+        firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+            .then(() => {
+                window.localStorage.setItem('emailForSignIn', email);
+                alert('安全验证邮件已发送！请前往您的邮箱点击链接完成登录。');
+            })
+            .catch((error) => {
+                alert('发送失败: ' + error.message);
+            });
+    }
+</script>
+
 </body>
 </html>
