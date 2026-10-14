@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koreya Mektebi — корей тілін үйрен</title>
+<meta name="description" content="Корей тілін қазақша түсіндірмелермен үйрен: хангыль, 15 сабақ, сөздік, диалогтар, тесттер. Тегін.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="#/home" class="logo-link">
+        <span class="logo-mark">한</span>
+        <span class="logo-text">
+          <b>Koreya Mektebi</b>
+          <small data-i18n="appTag"></small>
+        </span>
+      </a>
+      <button class="icon-btn nav-close" id="navClose" aria-label="close">✕</button>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#/home" class="nav-item" data-route="home"><span class="nav-ico">🏠</span><span data-i18n="nav.home"></span></a>
+      <a href="#/lessons" class="nav-item" data-route="lessons"><span class="nav-ico">📚</span><span data-i18n="nav.lessons"></span></a>
+      <a href="#/tests" class="nav-item" data-route="tests"><span class="nav-ico">✅</span><span data-i18n="nav.tests"></span></a>
+      <a href="#/progress" class="nav-item" data-route="progress"><span class="nav-ico">📈</span><span data-i18n="nav.progress"></span></a>
+      <a href="#/dictionary" class="nav-item" data-route="dictionary"><span class="nav-ico">📖</span><span data-i18n="nav.dictionary"></span></a>
+      <a href="#/profile" class="nav-item" data-route="profile"><span class="nav-ico">👤</span><span data-i18n="nav.profile"></span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-user" id="sidebarUser"></div>
+      <button class="nav-item theme-btn" id="themeBtn"><span class="nav-ico">🌙</span><span data-i18n="theme"></span></button>
+      <div class="lang-switch" id="langSwitch">
+        <button data-lang="kk" class="lang-btn">Қаз</button>
+        <button data-lang="ru" class="lang-btn">Рус</button>
+        <button data-lang="zh" class="lang-btn">中文</button>
+      </div>
+    </div>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn nav-open" id="navOpen" aria-label="menu">☰</button>
+      <span class="topbar-brand" id="topbarBrand">Koreya Mektebi</span>
+      <span class="topbar-right">
+        <button class="icon-btn" id="themeBtnTop" aria-label="theme">🌙</button>
+      </span>
+    </header>
+    <div class="content" id="view"></div>
+    <footer class="footer" id="footer"></footer>
+  </main>
+</div>
+<script src="js/i18n.js"></script>
+<script src="js/content.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
